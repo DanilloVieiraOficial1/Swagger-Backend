@@ -1,77 +1,39 @@
 {
     "swagger": "2.0",
     "info": {
-      "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+      "description": "Isto é uma documentação de todo o backend da aplicação AppSenac, está incluido todas as rotas da aplicação e seus modelos",
       "version": "1.0.0",
-      "title": "Swagger Petstore",
-      "termsOfService": "http://swagger.io/terms/",
-      "contact": {
-        "email": "apiteam@swagger.io"
+      "title": "AppSenac"
       },
-      "license": {
-        "name": "Apache 2.0",
-        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-      }
-    },
-    "host": "petstore.swagger.io",
-    "basePath": "/v2",
     "tags": [
       {
-        "name": "pet",
-        "description": "Everything about your Pets",
-        "externalDocs": {
-          "description": "Find out more",
-          "url": "http://swagger.io"
-        }
+        "name": "Usuário",
+        "description": "Tudo sobre usuários"
       },
       {
-        "name": "store",
-        "description": "Access to Petstore orders"
+        "name": "Cursos",
+        "description": "Tudo sobre cursos"
       },
       {
-        "name": "user",
-        "description": "Operations about user",
-        "externalDocs": {
-          "description": "Find out more about our store",
-          "url": "http://swagger.io"
-        }
+        "name": "Área",
+        "description": "Tudo sobre as áreas"
       }
     ],
     "schemes": [
-      "https",
+      
       "http"
     ],
     "paths": {
-      "/pet": {
-        "post": {
+      "/api/user": {
+        "get": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
-          "summary": "Add a new pet to the store",
+          "summary": "Lista todos usuários cadastrados",
           "description": "",
-          "operationId": "addPet",
-          "consumes": [
-            "application/json",
-            "application/xml"
-          ],
-          "produces": [
-            "application/xml",
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "description": "Pet object that needs to be added to the store",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Pet"
-              }
-            }
-          ],
           "responses": {
-            "405": {
-              "description": "Invalid input"
+            "200": {
+              "description": "Usuários encontrados"
             }
           },
           "security": [
@@ -83,42 +45,30 @@
             }
           ]
         },
-        "put": {
+        "post": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
-          "summary": "Update an existing pet",
+          "summary": "Cria um usuário",
           "description": "",
           "operationId": "updatePet",
-          "consumes": [
-            "application/json",
-            "application/xml"
-          ],
-          "produces": [
-            "application/xml",
-            "application/json"
-          ],
+   
           "parameters": [
             {
               "in": "body",
               "name": "body",
-              "description": "Pet object that needs to be added to the store",
+              "description": "Requerimentos para criar usuário",
               "required": true,
               "schema": {
-                "$ref": "#/definitions/Pet"
+                "$ref": "#/definitions/User"
               }
             }
           ],
           "responses": {
-            "400": {
-              "description": "Invalid ID supplied"
-            },
-            "404": {
-              "description": "Pet not found"
-            },
-            "405": {
-              "description": "Validation exception"
+            "200": {
+              "description": "Usuário criado com sucesso"
             }
+
           },
           "security": [
             {
@@ -130,50 +80,39 @@
           ]
         }
       },
-      "/pet/findByStatus": {
+      "/api/user/3": {
         "get": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
-          "summary": "Finds Pets by status",
-          "description": "Multiple status values can be provided with comma separated strings",
-          "operationId": "findPetsByStatus",
-          "produces": [
-            "application/xml",
-            "application/json"
-          ],
+          "summary": "Exibi um usuário cadastrado",
+
           "parameters": [
             {
-              "name": "status",
-              "in": "query",
-              "description": "Status values that need to be considered for filter",
-              "required": true,
-              "type": "array",
+              "name": "id",
+              "in": "params",
+              "description": "",
+              "required": false,
+              "type": "integer",
               "items": {
-                "type": "string",
-                "enum": [
-                  "available",
-                  "pending",
-                  "sold"
-                ],
+                "type": "integer",
+               
                 "default": "available"
-              },
-              "collectionFormat": "multi"
+              }
+              
             }
           ],
           "responses": {
             "200": {
-              "description": "successful operation",
+              "description": "Id localizado com sucesso",
               "schema": {
-                "type": "array",
+                "type": "integer",
                 "items": {
-                  "$ref": "#/definitions/Pet"
+                  "$ref": "#/definitions/ID"
                 }
               }
-            },
-            "400": {
-              "description": "Invalid status value"
             }
+
           },
           "security": [
             {
@@ -188,7 +127,7 @@
       "/pet/findByTags": {
         "get": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
           "summary": "Finds Pets by tags",
           "description": "Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.",
@@ -238,7 +177,7 @@
       "/pet/{petId}": {
         "get": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
           "summary": "Find pet by ID",
           "description": "Returns a single pet",
@@ -279,7 +218,7 @@
         },
         "post": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
           "summary": "Updates a pet in the store with form data",
           "description": "",
@@ -331,7 +270,7 @@
         },
         "delete": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
           "summary": "Deletes a pet",
           "description": "",
@@ -377,7 +316,7 @@
       "/pet/{petId}/uploadImage": {
         "post": {
           "tags": [
-            "pet"
+            "Usuário"
           ],
           "summary": "uploads an image",
           "description": "",
@@ -433,7 +372,7 @@
       "/store/inventory": {
         "get": {
           "tags": [
-            "store"
+            "Cursos"
           ],
           "summary": "Returns pet inventories by status",
           "description": "Returns a map of status codes to quantities",
@@ -464,7 +403,7 @@
       "/store/order": {
         "post": {
           "tags": [
-            "store"
+            "Cursos"
           ],
           "summary": "Place an order for a pet",
           "description": "",
@@ -500,7 +439,7 @@
       "/store/order/{orderId}": {
         "get": {
           "tags": [
-            "store"
+            "Cursos"
           ],
           "summary": "Find purchase order by ID",
           "description": "For valid response try integer IDs with value >= 1 and <= 10.         Other values will generated exceptions",
@@ -538,7 +477,7 @@
         },
         "delete": {
           "tags": [
-            "store"
+            "Cursos"
           ],
           "summary": "Delete purchase order by ID",
           "description": "For valid response try integer IDs with positive integer value.         Negative or non-integer values will generate API errors",
@@ -571,7 +510,7 @@
       "/user": {
         "post": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Create user",
           "description": "This can only be done by the logged in user.",
@@ -601,7 +540,7 @@
       "/user/createWithArray": {
         "post": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Creates list of users with given input array",
           "description": "",
@@ -634,7 +573,7 @@
       "/user/createWithList": {
         "post": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Creates list of users with given input array",
           "description": "",
@@ -667,7 +606,7 @@
       "/user/login": {
         "get": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Logs user into the system",
           "description": "",
@@ -720,7 +659,7 @@
       "/user/logout": {
         "get": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Logs out current logged in user session",
           "description": "",
@@ -740,7 +679,7 @@
       "/user/{username}": {
         "get": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Get user by user name",
           "description": "",
@@ -775,7 +714,7 @@
         },
         "put": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Updated user",
           "description": "This can only be done by the logged in user.",
@@ -813,7 +752,7 @@
         },
         "delete": {
           "tags": [
-            "user"
+            "Área"
           ],
           "summary": "Delete user",
           "description": "This can only be done by the logged in user.",
@@ -859,181 +798,107 @@
       }
     },
     "definitions": {
-      "Order": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "petId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "shipDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "status": {
-            "type": "string",
-            "description": "Order Status",
-            "enum": [
-              "placed",
-              "approved",
-              "delivered"
-            ]
-          },
-          "complete": {
-            "type": "boolean",
-            "default": false
-          }
-        },
-        "xml": {
-          "name": "Order"
-        }
-      },
-      "Category": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "xml": {
-          "name": "Category"
-        }
-      },
       "User": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "username": {
-            "type": "string"
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "format": "VARCHAR(20)"
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "format": "VARCHAR(100)"   
           },
           "password": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "userStatus": {
-            "type": "integer",
-            "format": "int32",
-            "description": "User Status"
+            "type": "string",
+            "format": "VARCHAR(100)"
           }
-        },
-        "xml": {
-          "name": "User"
         }
       },
-      "Tag": {
+      "Curso": {
         "type": "object",
         "properties": {
-          "id": {
+          "description": {
+            "type": "string",
+            "format": "VARCHAR(100)"
+          },
+          "url": {
+            "type": "string",
+            "format": "VARCHAR(1000)" 
+          },
+          "banner": {
+            "type": "Boolean(false)"   
+          },
+          "ativo": {
+            "type": "Boolean(false)"
+          },
+          "imagem": {
+            "type": "string",
+            "format": "VARCHAR(1000)"
+          },
+          "subArea": {
             "type": "integer",
             "format": "int64"
-          },
-          "name": {
-            "type": "string"
           }
-        },
-        "xml": {
-          "name": "Tag"
         }
       },
-      "Pet": {
+      "Área": {
         "type": "object",
-        "required": [
-          "name",
-          "photoUrls"
-        ],
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "category": {
-            "$ref": "#/definitions/Category"
-          },
-          "name": {
+          "description": {
             "type": "string",
-            "example": "doggie"
+            "format": "VARCHAR(100)"
           },
-          "photoUrls": {
-            "type": "array",
-            "xml": {
-              "name": "photoUrl",
-              "wrapped": true
-            },
-            "items": {
-              "type": "string"
-            }
-          },
-          "tags": {
-            "type": "array",
-            "xml": {
-              "name": "tag",
-              "wrapped": true
-            },
-            "items": {
-              "$ref": "#/definitions/Tag"
-            }
-          },
-          "status": {
-            "type": "string",
-            "description": "pet status in the store",
-            "enum": [
-              "available",
-              "pending",
-              "sold"
-            ]
+          "active": {
+            "type": "Boolean(false)"
           }
-        },
-        "xml": {
-          "name": "Pet"
         }
       },
-      "ApiResponse": {
+      "SubArea": {
         "type": "object",
         "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
+          "description": {
+            "type": "string",
+            "format": "VARCHAR(100)"
           },
-          "type": {
-            "type": "string"
+          "active": {
+            "type": "Boolean(false)"
+            
           },
-          "message": {
-            "type": "string"
+          "área": {
+            "type": "integer"
+            
           }
+        }   
+      },
+      "PasswordUpdate": {
+        "type": "object",
+        "properties": {
+          "creationDate": {
+            "type": "DATE"      
+        },
+        "key": {
+          "type": "string",
+          "format": "VARCHAR(50)"
+        },
+        "useDate": {
+          "type": "DATE"
+        },
+        "user": {
+          "type": "string",
+          "format": "VARCHAR()"
         }
       }
     },
-    "externalDocs": {
-      "description": "Find out more about Swagger",
-      "url": "http://swagger.io"
-    },
-    "servers": ["http://localhost:8000"]
+    "ID": {
+      "type": "object",
+      "properties": {
+        ":id": {
+          "type": "integer"
+        }
+      }
+    }
   }
+}
     
   
