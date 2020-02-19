@@ -63,8 +63,8 @@ module.exports = {
                 where: { id }
             });
 
-            if(!exibeRes ===0){
-                res.status(200).json(exibeRes);
+            if(exibeRes != 0){
+                res.status(200).json("Usuário " + id + " Atualizado com sucesso!");
             }else{
                 res.status(400).send("Dados não atualizados");
             }
@@ -82,9 +82,9 @@ module.exports = {
             const exibeRes = await User.destroy({
                 where: { id }
             })
-    
-            if(!exibeRes === 0){
-                res.status(200).json(exibeRes);
+            
+            if(exibeRes != 0){
+                res.status(200).json("Usuário "  + id +  " excluido");
             }else{
                 res.status(400).send("Usuário não existe");
             }
