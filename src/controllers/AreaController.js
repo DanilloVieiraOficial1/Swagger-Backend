@@ -94,7 +94,7 @@ module.exports = {
         res.status(200).json({ message: "Dados deletados com sucesso" });
       }
 
-      res.status(200).json({ message: "Dados não deletados" });
+      res.status(404).json({ message: "Dados não deletados" });
     } catch (error) {
       console.log(error);
       res.status(400).json({ message: "Algo deu errado" });

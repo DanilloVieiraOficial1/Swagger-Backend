@@ -2,15 +2,15 @@ const Curso = require("../models/Curso");
 
 module.exports = {
   async store(req, res) {
-    const { description, url, banner, ativo, imagem, subArea} = req.body;
+    const { description, url, banner, ativo, imagem, subArea } = req.body;
 
     const createCurs = await Curso.create({
-        description, 
-        url, 
-        banner, 
-        ativo, 
-        imagem, 
-        subArea
+      description,
+      url,
+      banner,
+      ativo,
+      imagem,
+      subArea
     })
     res.status(200).json(createCurs);
   },
@@ -19,7 +19,6 @@ module.exports = {
       const consult = await Curso.findAll();
       res.status(200).json(consult);
     } catch (error) {
-      console.log(error);
       res.status(400).json({ message: "Algo deu errado" });
     }
   },

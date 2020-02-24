@@ -1,7 +1,7 @@
 const dadosDaConexao = {
-    database:'senac',
-    user:'root',
-    password:'root',
+    database: 'senac',
+    user: 'root',
+    password: '',
 }
 
 module.exports = dadosDaConexao;
