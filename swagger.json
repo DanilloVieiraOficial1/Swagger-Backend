@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Isto é uma documentação de todo o backend da aplicação AppSenac, está incluido todas as rotas da aplicação e seus modelos",
+    "description": "Documentação de todo o backend da aplicação AppSenac, está incluido todas as rotas da aplicação e seus modelos",
     "version": "1.0.0",
     "title": "AppSenac"
   },
@@ -214,7 +214,7 @@
         "tags": [
           "Curso"
         ],
-        "summary": "Lista todos cursos cadastrados",
+        "summary": "Lista todos os cursos cadastrados",
         "parameters": [],
         "responses": {
           "200": {
@@ -242,7 +242,7 @@
           {
             "name": "curso",
             "in": "body",
-            "description": "rrrrrrrr",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#definitions/Curso"
@@ -418,7 +418,7 @@
           {
             "name": "área",
             "in": "body",
-            "description": "kkkkk",
+            "description": "",
             "required": true,
             "schema": {
               "$ref": "#definitions/Área"
@@ -429,8 +429,11 @@
           "200": {
             "description": "Àrea cadastrada com sucesso"
           },
-          "400": {
+          "500": {
             "description": "Algo deu errado"
+          },
+          "406": {
+            "description": "Área ja existente"
           }
         },
         "security": [
@@ -617,7 +620,7 @@
         ]
       }
     },
-    "/api/subArea/{d}": {
+    "/api/subArea/{id}": {
       "get": {
         "tags": [
           "SubArea"
@@ -752,7 +755,7 @@
         ],
         "responses": {
           "200": {
-            "description": "SubArea cadastrada com sucesso"
+            "description": "Login efetuado com sucesso"
           },
           "400": {
             "description": "Algo deu errado"
